@@ -42,6 +42,33 @@ $hotels = [
 
 ];
 
+$hotelsfilter = $hotels;
+
+
+$_GET['parking'];
+$_GET['stars'];
+
+if ($_GET['parking'] == true) {
+    $hoteltemp = [];
+    foreach ($hotelsfilter as $hotel) {
+
+        if ($hotel['parking'] === true) {
+            $hoteltemp[] = $hotel;
+        }
+    }
+    $hotelsfilter = $hoteltemp;
+}
+
+if ($_GET['stars'] > 0 && $_GET['stars'] < 6) {
+    $hoteltemp = [];
+    foreach ($hotelsfilter as $hotel) {
+        if ($hotel['vote'] >= $_GET['stars']) {
+            $hoteltemp[] = $hotel;
+        }
+    }
+    $hotelsfilter = $hoteltemp;
+}
+
 ?>
 
 
